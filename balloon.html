@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ballon</title>
+
+  <style>
+    .ballonBtn{
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: red;
+      margin: auto;
+      display: block;
+    }
+
+    #status{
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
+
+</head>
+<body>
+  <h1>Ballon</h1>
+  <div id="ballon" >
+    <button class="ballonBtn"><span>.</span></button>
+  </div>
+  <div id="status">Largura atual: 200px</div>
+  <script>
+    
+    
+    function ballon() {
+      const btnBallon = document.querySelector(".ballonBtn");
+      const status = document.querySelector("#status");
+
+      btnBallon.addEventListener('click', () => {
+        let currentWidth = parseInt(window.getComputedStyle(btnBallon).width);
+
+        if(currentWidth >= 420){
+          currentWidth = 200;
+          btnBallon.style.width = `${currentWidth}px`;
+
+        } else{
+          currentWidth += 20;
+          btnBallon.style.width = `${currentWidth}px`;
+          btnBallon.style.backgroundColor = `green`;
+        }
+        status.textContent = `Largura atual: ${currentWidth}px`;
+        console.log(currentWidth);
+      });
+    }
+
+    window.onload = ballon;
+  </script>
+</body>
+</html>
